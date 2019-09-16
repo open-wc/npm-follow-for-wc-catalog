@@ -70,24 +70,29 @@ async function main() {
 
     let customElementsJsonString = await aRequest(url);
     // if unpkg does not have the package yet then wait/fetch with increasing intervales
-    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
-      console.log('Starting to wait for unpkg');
-      await aTimeout(10);
-      customElementsJsonString = await aRequest(url);
-    }
-    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
-      console.log('...more waiting for unpkg');
-      await aTimeout(100);
-      customElementsJsonString = await aRequest(url);
-    }
-    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
-      console.log('... ... extreme waiting for unpkg');
-      await aTimeout(1000);
-      customElementsJsonString = await aRequest(url);
-    }
-    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
-      console.log('!!! unpkg could not provide the package');
-      return;
+    try {
+      if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+        console.log('Starting to wait for unpkg');
+        await aTimeout(10);
+        customElementsJsonString = await aRequest(url);
+      }
+      if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+        console.log('...more waiting for unpkg');
+        await aTimeout(100);
+        customElementsJsonString = await aRequest(url);
+      }
+      if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+        console.log('... ... extreme waiting for unpkg');
+        await aTimeout(1000);
+        customElementsJsonString = await aRequest(url);
+      }
+      if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+        console.log('!!! unpkg could not provide the package');
+        return;
+      }
+    } catch (err) {
+      console.log('!!! unpkg host unreachable');
+      console.log(err);
     }
 
     if (customElementsJsonString === `Cannot find "/${customElementsFile}" in ${nameAtVersion}`) {
