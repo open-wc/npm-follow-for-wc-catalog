@@ -28,6 +28,12 @@ const aRequest = url =>
       });
   });
 
+function aTimeout(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+
 async function getNpmLastDbSeq() {
   const body = await aRequest(dbUrl);
   return JSON.parse(body).update_seq;
@@ -62,12 +68,35 @@ async function main() {
     const nameAtVersion = `${pkg.name}@${version}`;
     const url = `https://unpkg.com/${nameAtVersion}/${customElementsFile}`;
 
-    const customElementsJsonString = await aRequest(url);
-    if (customElementsJsonString !== `Cannot find "/${customElementsFile}" in ${nameAtVersion}`) {
+    let customElementsJsonString = await aRequest(url);
+    // if unpkg does not have the package yet then wait/fetch with increasing intervales
+    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+      console.log('Starting to wait for unpkg');
+      await aTimeout(10);
+      customElementsJsonString = await aRequest(url);
+    }
+    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+      console.log('...more waiting for unpkg');
+      await aTimeout(100);
+      customElementsJsonString = await aRequest(url);
+    }
+    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+      console.log('... ... extreme waiting for unpkg');
+      await aTimeout(1000);
+      customElementsJsonString = await aRequest(url);
+    }
+    if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
+      console.log('!!! unpkg could not provide the package');
+      return;
+    }
+
+    if (customElementsJsonString === `Cannot find "/${customElementsFile}" in ${nameAtVersion}`) {
+      console.log(`  ${pkg.name}@${version} !== Web Component // ignore`);
+    }
+
+    if (customElementsJsonString[0] === '{') {
       console.log(`----------------- ${pkg.name}@${version} === Web Component -----------------`);
       await createPackage(pkg, version, JSON.parse(customElementsJsonString));
-    } else {
-      console.log(`  ${pkg.name}@${version} !== Web Component // ignore`);
     }
   }
 
@@ -75,6 +104,7 @@ async function main() {
 
   // for a new index the sequence to start/since from is 2877390 as this marks roughtly
   // the time/change the first `custom-element.json` got published to npm
+  // second update after 2899795
   const configOptions = {
     db: dbUrl,
     include_docs: true,
