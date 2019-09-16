@@ -1,0 +1,92 @@
+mutation CreateALibrary {
+  createLibrary(data: { name: "HTMLElement" }) {
+    name
+    _id
+  }
+}
+
+mutation CreateALibrary {
+  createLibrary(data: { name: "LitElement 2.x" }) {
+    name
+    _id
+  }
+}
+
+mutation {
+  createNpmSync(data: { seq: 2877390 }) {
+    seq
+    _id
+  }
+}
+
+mutation {
+  updateNpmSync(id: 243559161511543297, data: { seq: 2877391 }) {
+    seq
+    _id
+  }
+}
+
+query {
+  findNpmSyncByID(id: 243559161511543297) {
+    seq
+    _id
+  }
+}
+
+mutation createPackage {
+  createPackage(
+    data: {
+      name: "test-wc-card"
+      version: "0.0.4"
+      library: { connect: 243520943355331079 }
+      customElements: {
+        create: [
+          {
+            name: "test-wc-card"
+            library: { connect: 243520943355331079 }
+            attributes: {
+              create: [
+                { name: "header", type: "String" }
+                { name: "side", type: "String", values: { create: [{ name: "A" }, { name: "B" }] } }
+              ]
+            }
+            properties: {
+              create: [
+                { name: "header", type: "String", attribute: "header" }
+                {
+                  name: "side"
+                  type: "String"
+                  attribute: "side"
+                  reflect: true
+                  values: { create: [{ name: "A" }, { name: "B" }] }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ) {
+    name
+    _id
+    customElements {
+      data {
+        name
+        attributes {
+          data {
+            name
+            type
+          }
+        }
+        properties {
+          data {
+            name
+            type
+            attribute
+            reflect
+          }
+        }
+      }
+    }
+  }
+}

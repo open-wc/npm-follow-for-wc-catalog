@@ -1,0 +1,67 @@
+{
+  "name": "test-wc-card",
+  "version": "0.0.4",
+  "time": "2019-09-14T15:59:38.996Z",
+  "description": "Webcomponent test-wc-card following open-wc recommendations",
+  "author": {
+    "name": "test-wc-card"
+  },
+  "homepage": "https://github.com/daKmoR/test-wc-card",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daKmoR/test-wc-card.git"
+  },
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0"
+  },
+  "module": "index.js",
+  "keywords": ["lit-element-2.x"],
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/daKmoR/test-wc-card/issues"
+  },
+  "maintainers": [
+    {
+      "name": "d4kmor",
+      "email": "d4kmor@gmail.com"
+    }
+  ],
+  "customElementsFilename": "custom-elements.json",
+  "customElements": {
+    "version": 2,
+    "tags": [
+      {
+        "name": "test-wc-card",
+        "attributes": [
+          {
+            "name": "header",
+            "type": "string"
+          },
+          {
+            "name": "side",
+            "type": "string",
+            "values": [{ "name": "A" }, { "name": "B" }]
+          }
+        ],
+        "properties": [
+          {
+            "name": "header",
+            "type": "string",
+            "attribute": "header"
+          },
+          {
+            "name": "side",
+            "type": "string",
+            "attribute": "side",
+            "reflect": true,
+            "values": [{ "name": "A" }, { "name": "B" }]
+          }
+        ],
+        "events": [],
+        "slots": []
+      }
+    ]
+  }
+}

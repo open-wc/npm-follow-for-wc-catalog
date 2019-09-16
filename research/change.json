@@ -1,0 +1,392 @@
+{
+  "seq": 2877396,
+  "id": "test-wc-card",
+  "changes": [
+    {
+      "rev": "2-0ddb98245c592275fb0650b2831411c9"
+    }
+  ],
+  "doc": {
+    "_id": "test-wc-card",
+    "_rev": "2-0ddb98245c592275fb0650b2831411c9",
+    "name": "test-wc-card",
+    "dist-tags": {
+      "latest": "0.0.4"
+    },
+    "versions": {
+      "0.0.1": {
+        "name": "test-wc-card",
+        "version": "0.0.1",
+        "description": "Webcomponent test-wc-card following open-wc recommendations",
+        "author": {
+          "name": "test-wc-card"
+        },
+        "homepage": "https://github.com/daKmoR/test-wc-card",
+        "license": "MIT",
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/daKmoR/test-wc-card.git"
+        },
+        "dependencies": {
+          "lit-element": "^2.0.1",
+          "lit-html": "^1.0.0"
+        },
+        "lint-staged": {
+          "*.js": ["eslint --fix", "prettier --write", "git add"]
+        },
+        "scripts": {
+          "start": "owc-dev-server -o demo",
+          "lint": "npm run lint:eslint && npm run lint:prettier",
+          "format": "npm run format:eslint && npm run format:prettier",
+          "lint:eslint": "eslint --ext .js,.html .",
+          "format:eslint": "eslint --ext .js,.html . --fix",
+          "lint:prettier": "prettier '**/*.js' --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+          "format:prettier": "prettier '**/*.js' --write",
+          "test": "karma start",
+          "test:watch": "karma start --auto-watch=true --single-run=false",
+          "test:es5": "karma start karma.es5.config.js",
+          "test:es5:watch": "karma start karma.es5.config.js --auto-watch=true --single-run=false",
+          "test:es5:bs": "karma start karma.es5.bs.config.js",
+          "site:build": "npm run storybook:build",
+          "storybook:build": "build-storybook -o _site",
+          "storybook:start": "start-storybook -p 9001"
+        },
+        "devDependencies": {
+          "@commitlint/cli": "^7.0.0",
+          "@commitlint/config-conventional": "^7.0.0",
+          "@open-wc/eslint-config": "^0.3.0",
+          "@open-wc/prettier-config": "^0.1.0",
+          "@open-wc/storybook": "^0.2.0",
+          "@open-wc/testing": "^0.9.0",
+          "@open-wc/testing-karma": "^0.4.0",
+          "@open-wc/testing-karma-bs": "^0.2.0",
+          "husky": "^1.0.0",
+          "lint-staged": "^8.0.0",
+          "owc-dev-server": "^0.1.5",
+          "webpack-merge": "^4.1.5"
+        },
+        "gitHead": "e8472dd04906720dde564bd4ab21eb7c72a6a77a",
+        "bugs": {
+          "url": "https://github.com/daKmoR/test-wc-card/issues"
+        },
+        "_id": "test-wc-card@0.0.1",
+        "_nodeVersion": "11.7.0",
+        "_npmVersion": "6.6.0",
+        "dist": {
+          "integrity": "sha512-9M8PxlFuWq6RGlCeJLxqdmadD9GZya0RpFoZpJSB/LNPR83sQf+d+3CoREgpTE/ItdpvSMen71JMBI0vJi5h3w==",
+          "shasum": "024ac51647423ea92cbf4e3ba8e12f317610be96",
+          "tarball": "https://registry.npmjs.org/test-wc-card/-/test-wc-card-0.0.1.tgz",
+          "fileCount": 28,
+          "unpackedSize": 16605,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcaKPeCRA9TVsSAnZWagAA8xcP+QBMqgF+bLr6hQQc5xot\nlagu6QG9dfCBquNh5EwaV9+rsAKMi6Xt7pss3iN+eLnHkvr0/7Hz+saqK1Q6\nTCTC1m86scLeCgDtgcQkUhLbr1ub9LUZI6dtHyanlJTmUl0FDQ0rRB4BmJFy\nDlUQPwk0tE+NpnLX8EiZLwSyfqVseWQ6dxsT0NgLSmSsSWExIHqs8qwTXuAO\neWqYyKGoD3H1tjdPuvFXZ7zsE7hTfuGAhWZ9YPoB57atbiC2sf/qYj8ILfu5\njBJhlZcAboXQ93sEvbvlZjZ6hcYr+tvkNrwx3cCNoAld6JwH8IlmXAJqdHOM\ncSCCCgpKaTCQY+jmfFfkxNyF3PidKLsBTFnfKIZtUdvfk+LEOrivkoNeN4PN\nw0fwbKSaucF5VWTfuFKvwFZ3mFCbfdjgH89dvZ3FDO2d9VjxyV9oBBsxDvQ0\n7TCmVHT2mFCv/a7+cC8i4S2Zlf5DYt8qE/nu3Kt5NS284Gnxp0XMGh9t8+ew\nIk9jfox5QBybU+IMl5lLzgRNmqhIA9omcGwmdSz9OYIgSkjAdBxKWgreC4f7\nrdo1UPfWi6tyTH71cqX3bdxJG4JzNIAB10QIY3RkbGNjGMHNKV3DJrgFibuE\nxqzf/F/3dsh44OxjD92MsnJvv2/mgiIlxeOgXgW/aprzc6fjS3QjyTNUnpWm\nxJWH\r\n=Spn6\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "maintainers": [
+          {
+            "name": "d4kmor",
+            "email": "d4kmor@gmail.com"
+          }
+        ],
+        "_npmUser": {
+          "name": "d4kmor",
+          "email": "d4kmor@gmail.com"
+        },
+        "directories": {},
+        "_npmOperationalInternal": {
+          "host": "s3://npm-registry-packages",
+          "tmp": "tmp/test-wc-card_0.0.1_1550361565343_0.20145038549892003"
+        },
+        "_hasShrinkwrap": false
+      },
+      "0.0.2": {
+        "name": "test-wc-card",
+        "version": "0.0.2",
+        "description": "Webcomponent test-wc-card following open-wc recommendations",
+        "author": {
+          "name": "test-wc-card"
+        },
+        "homepage": "https://github.com/daKmoR/test-wc-card",
+        "license": "MIT",
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/daKmoR/test-wc-card.git"
+        },
+        "dependencies": {
+          "lit-element": "^2.0.1",
+          "lit-html": "^1.0.0"
+        },
+        "lint-staged": {
+          "*.js": ["eslint --fix", "prettier --write", "git add"]
+        },
+        "keywords": ["lit-element-2.x"],
+        "scripts": {
+          "start": "owc-dev-server -o demo",
+          "lint": "npm run lint:eslint && npm run lint:prettier",
+          "format": "npm run format:eslint && npm run format:prettier",
+          "lint:eslint": "eslint --ext .js,.html .",
+          "format:eslint": "eslint --ext .js,.html . --fix",
+          "lint:prettier": "prettier '**/*.js' --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+          "format:prettier": "prettier '**/*.js' --write",
+          "test": "karma start",
+          "test:watch": "karma start --auto-watch=true --single-run=false",
+          "test:es5": "karma start karma.es5.config.js",
+          "test:es5:watch": "karma start karma.es5.config.js --auto-watch=true --single-run=false",
+          "test:es5:bs": "karma start karma.es5.bs.config.js",
+          "site:build": "npm run storybook:build",
+          "storybook:build": "build-storybook -o _site",
+          "storybook:start": "start-storybook -p 9001"
+        },
+        "devDependencies": {
+          "@commitlint/cli": "^7.0.0",
+          "@commitlint/config-conventional": "^7.0.0",
+          "@open-wc/eslint-config": "^0.3.0",
+          "@open-wc/prettier-config": "^0.1.0",
+          "@open-wc/storybook": "^0.2.0",
+          "@open-wc/testing": "^0.9.0",
+          "@open-wc/testing-karma": "^0.4.0",
+          "@open-wc/testing-karma-bs": "^0.2.0",
+          "husky": "^1.0.0",
+          "lint-staged": "^8.0.0",
+          "owc-dev-server": "^0.1.5",
+          "webpack-merge": "^4.1.5"
+        },
+        "gitHead": "c82aef273316d328dbc2222b35041283867197cb",
+        "bugs": {
+          "url": "https://github.com/daKmoR/test-wc-card/issues"
+        },
+        "_id": "test-wc-card@0.0.2",
+        "_nodeVersion": "11.7.0",
+        "_npmVersion": "6.6.0",
+        "dist": {
+          "integrity": "sha512-ti4N32TezTFlnH+F4UtLyt98ZD4vK2RxIsf+/bGoLq0G3qHq+Wvx9PVE6wQqv1Rvim3usfEAH+w0fNT38fLk1g==",
+          "shasum": "643f78c13cb6f06be1841e497fcb18c3ee145ea7",
+          "tarball": "https://registry.npmjs.org/test-wc-card/-/test-wc-card-0.0.2.tgz",
+          "fileCount": 28,
+          "unpackedSize": 16648,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcaKXmCRA9TVsSAnZWagAAtnwP/2bOtktHOR0l9RgGdKyL\nz8yrhCOvS/s8MYBr0cEfzlWX50mbrnmtZ6VsrVgn+mMcCj/R/qNzDpN2ezEC\nr+LTiiZklNKzThOGqsIiQAV48z0r0EKFARpHkcQOmlr1NlxQX2yL928M0n9z\nvqdtSVAuwDE/Hiu8i+ZaL0LAl34uoSH3NM8IPhUD9KD0ATboG+hZ0LIdxea7\nYSuGW+XHwAqSJdo+3O1GlfhkS2jdK01bPkBHHkwU4pw4/mZEYyZHYl3vno0c\nW6K2R7C10EjOfCvU09C9HFg7J5D+4hcB6cVzuWg/H44STn6HNfZQpztMw4H3\ny4EzzH3pEVUNn9xRVb1N3pVN355wZbvz2QC3XNYmFx2l78dGCs/cjye2JatL\nEmabgCJMgc7k0vbzi+u+Cg7s5aD5yN7ilKIB2vxFgAyc4T7Z2gDQS52Q5e0y\nxBjegdLsaOi1ptdW28F163iOR+UvK0yXSKeQl6PP4/EFBjgplH+IYmW49iaA\nySTyNcnKD1/EktanQoqQZL8fifQ2eaCoxB4RvwF+DKpecHWjOzku1xVVGQDW\nKU4aTHf77GvlgEprT0PbLOTxQee244SLAfkr0Va46cxdmwmiafJSWV1ipI0w\neE7Xp65EIu+ZGtHVDFXMSmEoyzGkd4TUo8DFsc1eFF5SOMwxs8mJMld5HPi3\nTw6G\r\n=g0Zh\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "maintainers": [
+          {
+            "name": "d4kmor",
+            "email": "d4kmor@gmail.com"
+          }
+        ],
+        "_npmUser": {
+          "name": "d4kmor",
+          "email": "d4kmor@gmail.com"
+        },
+        "directories": {},
+        "_npmOperationalInternal": {
+          "host": "s3://npm-registry-packages",
+          "tmp": "tmp/test-wc-card_0.0.2_1550362085533_0.13992451796920657"
+        },
+        "_hasShrinkwrap": false
+      },
+      "0.0.3": {
+        "name": "test-wc-card",
+        "version": "0.0.3",
+        "description": "Webcomponent test-wc-card following open-wc recommendations",
+        "author": {
+          "name": "test-wc-card"
+        },
+        "homepage": "https://github.com/daKmoR/test-wc-card",
+        "license": "MIT",
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/daKmoR/test-wc-card.git"
+        },
+        "dependencies": {
+          "lit-element": "^2.0.1",
+          "lit-html": "^1.0.0"
+        },
+        "lint-staged": {
+          "*.js": ["eslint --fix", "prettier --write", "git add"]
+        },
+        "module": "index.js",
+        "keywords": ["lit-element-2.x"],
+        "scripts": {
+          "start": "owc-dev-server -o demo",
+          "lint": "npm run lint:eslint && npm run lint:prettier",
+          "format": "npm run format:eslint && npm run format:prettier",
+          "lint:eslint": "eslint --ext .js,.html .",
+          "format:eslint": "eslint --ext .js,.html . --fix",
+          "lint:prettier": "prettier '**/*.js' --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+          "format:prettier": "prettier '**/*.js' --write",
+          "test": "karma start",
+          "test:watch": "karma start --auto-watch=true --single-run=false",
+          "test:es5": "karma start karma.es5.config.js",
+          "test:es5:watch": "karma start karma.es5.config.js --auto-watch=true --single-run=false",
+          "test:es5:bs": "karma start karma.es5.bs.config.js",
+          "site:build": "npm run storybook:build",
+          "storybook:build": "build-storybook -o _site",
+          "storybook:start": "start-storybook -p 9001"
+        },
+        "devDependencies": {
+          "@commitlint/cli": "^7.0.0",
+          "@commitlint/config-conventional": "^7.0.0",
+          "@open-wc/eslint-config": "^0.3.0",
+          "@open-wc/prettier-config": "^0.1.0",
+          "@open-wc/storybook": "^0.2.0",
+          "@open-wc/testing": "^0.9.0",
+          "@open-wc/testing-karma": "^0.4.0",
+          "@open-wc/testing-karma-bs": "^0.2.0",
+          "husky": "^1.0.0",
+          "lint-staged": "^8.0.0",
+          "owc-dev-server": "^0.1.5",
+          "webpack-merge": "^4.1.5"
+        },
+        "gitHead": "246aea206f08e29cb9616bed058e1dc7fe8b969e",
+        "bugs": {
+          "url": "https://github.com/daKmoR/test-wc-card/issues"
+        },
+        "_id": "test-wc-card@0.0.3",
+        "_nodeVersion": "11.7.0",
+        "_npmVersion": "6.6.0",
+        "dist": {
+          "integrity": "sha512-uk7NsdRpko+CgLzixARD90XGkpKlqTXsR2aUZm5t90w6UQCqg5gb+kVz2XWAm9YmKx5bW16GtGFY0iAJftwgRw==",
+          "shasum": "6d4efbcdcd666f8a501167d7d016bc5df3f422c4",
+          "tarball": "https://registry.npmjs.org/test-wc-card/-/test-wc-card-0.0.3.tgz",
+          "fileCount": 28,
+          "unpackedSize": 16720,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcaLTcCRA9TVsSAnZWagAABAUP/2mSLLCWI5X5ULmzoXCq\nHgAAHBJ+Ym63wWE0vIWjw0QYqRdF1L0IWjZpnvSl9y7CC3nKHnJb19Vxc6eh\nqW/YWzeYzE1LlbWB52iOBaa16V63OILyoRJGmkJNGlfCO+QTpPNJBitVWgdF\ntZpDk2w9gtPhEydMX1x3lnk5hMcf+AveRsX75IRRPxSjK/mj+b2ebg8AjOvo\n1Bv5/1pTzZbzkLwhLAi2C2oTzRnk4723zAAVlsnbvOps/htgDHgPURSLcFJQ\nZdnQoBL4Kr1vo+1XtAJ+gJOf2vyx/Mscm30rq5k7/5OrDFLPwIoClZAy3eqF\nBC3NFD2FH7oQHrBR1ur8pMbbCjib2iycws5/7K1FfMnqx0vkQNQDVyfDRs+L\n8TRWTV1cnmv5VoJUFbasJJu96xvsXV5T8BYJygnP35OFFhA6lXml24nX3mR9\nzfu9abY+RVnWb/bb5Mxmc6NWNhcmPl2ysxqKKT/24hbcB96jWgoYjjOxCtRj\nelSpypeHkjI2LW/ovV+8nVeBzzuQBI22NfWj0DMscYvNlHUHFqgPQEdRa7bP\nCoy8rd96KopSvHXe4EqOmGaeq3JF3pKzPhTfRGn7rAcUcM0JcfDka+ozZhUx\n4ypSiqvX5Z7BcNYmfz53RnXs1s37aRRpfa/V25MOd0tVt1GOx8poeLjAPQCl\n4kND\r\n=4Ra7\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "maintainers": [
+          {
+            "name": "d4kmor",
+            "email": "d4kmor@gmail.com"
+          }
+        ],
+        "_npmUser": {
+          "name": "d4kmor",
+          "email": "d4kmor@gmail.com"
+        },
+        "directories": {},
+        "_npmOperationalInternal": {
+          "host": "s3://npm-registry-packages",
+          "tmp": "tmp/test-wc-card_0.0.3_1550365915218_0.4626790332627151"
+        },
+        "_hasShrinkwrap": false
+      },
+      "0.0.4": {
+        "name": "test-wc-card",
+        "version": "0.0.4",
+        "description": "Webcomponent test-wc-card following open-wc recommendations",
+        "author": {
+          "name": "test-wc-card"
+        },
+        "homepage": "https://github.com/daKmoR/test-wc-card",
+        "license": "MIT",
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/daKmoR/test-wc-card.git"
+        },
+        "dependencies": {
+          "lit-element": "^2.0.1",
+          "lit-html": "^1.0.0"
+        },
+        "lint-staged": {
+          "*.js": ["eslint --fix", "prettier --write", "git add"]
+        },
+        "module": "index.js",
+        "keywords": ["lit-element-2.x"],
+        "scripts": {
+          "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+          "start:compatibility": "es-dev-server --app-index demo/index.html --compatibility all --node-resolve --open --watch",
+          "lint": "npm run lint:eslint && npm run lint:prettier",
+          "format": "npm run format:eslint && npm run format:prettier",
+          "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+          "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+          "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+          "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+          "test": "karma start --coverage",
+          "test:update-snapshots": "karma start --update-snapshots",
+          "test:prune-snapshots": "karma start --prune-snapshots",
+          "test:compatibility": "karma start --compatibility all --coverage",
+          "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false"
+        },
+        "devDependencies": {
+          "@open-wc/eslint-config": "^1.0.0",
+          "@open-wc/prettier-config": "^0.1.10",
+          "@open-wc/testing": "^2.0.0",
+          "@open-wc/testing-karma": "^3.0.0",
+          "es-dev-server": "^1.5.0",
+          "husky": "^1.0.0",
+          "lint-staged": "^8.0.0",
+          "tsc": "^1.20150623.0",
+          "webpack-merge": "^4.1.5"
+        },
+        "main": "index.js",
+        "eslintConfig": {
+          "extends": ["@open-wc/eslint-config", "eslint-config-prettier"]
+        },
+        "prettier": "@open-wc/prettier-config",
+        "husky": {
+          "hooks": {
+            "pre-commit": "lint-staged"
+          }
+        },
+        "gitHead": "8d0243ea87d2428b8e0a135fd3fc4dfb55739899",
+        "bugs": {
+          "url": "https://github.com/daKmoR/test-wc-card/issues"
+        },
+        "_id": "test-wc-card@0.0.4",
+        "_nodeVersion": "10.16.0",
+        "_npmVersion": "6.9.0",
+        "dist": {
+          "integrity": "sha512-IrNit4D/Q8BHGA/k/YOxq1z2mz31xJqsOU2qn+0GpDD9oGv1mHwocfpCYb7Q/WmJx5OBQeLByQ8I3KGdg2IVdA==",
+          "shasum": "5165dad78e124eed67483158b6f721911f52543d",
+          "tarball": "https://registry.npmjs.org/test-wc-card/-/test-wc-card-0.0.4.tgz",
+          "fileCount": 13,
+          "unpackedSize": 9404,
+          "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdfQ5rCRA9TVsSAnZWagAAWN0QAJpuWZcpYcYpggAKbD+p\nnrfBZY5P28Ujun04gyS5eHceYzVb81WSgzs7X98LnRNVgKBOGkTJDD2SWq4S\nJ8IV6aCoP3XlUB171/g1c0rEBV/E1N/QiiqoMzFKs9MvXjw3dzWvYs6NIdkr\n3A3p3U4Z+cey/g/1HtWWXNBlV1meR/FzrlyolDuQg/FYXliWS2kLpz8JxqKg\nlunjfTsDeCW/e5/S2KVFcZuL5e2cce7fmn3AKLMT/w065wbbt4Z18VfA+cC6\nUPgHJtkfAK3BF87SVuobgIZ/+JyyKYc/0O3ASDX+MWDVGdpL1u/PE+6J9KBy\n8qmx5L6sxcPKTzCMPK8J/T/tp41cFnWYHowPfmLIt1Qygo2gEA/rPpNsF0X3\nB+3H6cM92bt9Ez2GbJ4zrt99gPTv9srElxTVV06+wGLmjmQzCTwwJGH5PYew\nUFEOps810WutHiIy5dNLIvqOn4bxK61hXZRrar0MWrSlwpbM2qGbbElDnNaI\nbdqfY9/sD2+C2+iDpjQMKN76APF6nYU6hw3JZZ5rgTTzoNa4krNE4pQJeyxl\nsm2soQMsHo87LzntBYfKRgdeeUy3ZKQ3OvCpr21Np543R20oWIJyFa6Q9b97\nRKn1t+ajb2Ryg7FnLosRnnRtLbsuNup3WiXlS8Um+5gp/Elhaa0UR5CsULDJ\ns6d6\r\n=XFmK\r\n-----END PGP SIGNATURE-----\r\n"
+        },
+        "maintainers": [
+          {
+            "name": "d4kmor",
+            "email": "d4kmor@gmail.com"
+          }
+        ],
+        "_npmUser": {
+          "name": "d4kmor",
+          "email": "d4kmor@gmail.com"
+        },
+        "directories": {},
+        "_npmOperationalInternal": {
+          "host": "s3://npm-registry-packages",
+          "tmp": "tmp/test-wc-card_0.0.4_1568476778871_0.9232508015391419"
+        },
+        "_hasShrinkwrap": false
+      }
+    },
+    "time": {
+      "created": "2019-02-16T23:59:25.343Z",
+      "0.0.1": "2019-02-16T23:59:25.521Z",
+      "modified": "2019-09-14T15:59:41.632Z",
+      "0.0.2": "2019-02-17T00:08:05.754Z",
+      "0.0.3": "2019-02-17T01:11:55.331Z",
+      "0.0.4": "2019-09-14T15:59:38.996Z"
+    },
+    "maintainers": [
+      {
+        "name": "d4kmor",
+        "email": "d4kmor@gmail.com"
+      }
+    ],
+    "description": "Webcomponent test-wc-card following open-wc recommendations",
+    "homepage": "https://github.com/daKmoR/test-wc-card",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/daKmoR/test-wc-card.git"
+    },
+    "author": {
+      "name": "test-wc-card"
+    },
+    "bugs": {
+      "url": "https://github.com/daKmoR/test-wc-card/issues"
+    },
+    "license": "MIT",
+    "readme": "# \\<test-wc-card>\n\nThis webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.\n\n## Installation\n```bash\nnpm i test-wc-card\n```\n\n## Usage\n```html\n<script type=\"module\">\n  import 'test-wc-card/test-wc-card.js';\n</script>\n\n<test-wc-card></test-wc-card>\n```\n\n## Testing using karma (if applied by author)\n```bash\nnpm run test\n```\n\n## Testing using karma via browserstack (if applied by author)\n```bash\nnpm run test:bs\n```\n\n## Demoing using storybook (if applied by author)\n```bash\nnpm run storybook\n```\n\n## Linting (if applied by author)\n```bash\nnpm run lint\n```\n",
+    "readmeFilename": "README.md",
+    "keywords": ["lit-element-2.x"],
+    "_attachments": {}
+  }
+}

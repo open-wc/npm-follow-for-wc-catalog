@@ -1,0 +1,71 @@
+type NpmSync {
+  seq: Int!
+}
+
+type Library {
+  name: String!
+  dependentPackages: [Package!]! @relation
+  dependentCustomElements: [CustomElement!]! @relation
+}
+
+type Package {
+  name: String!
+  version: String!
+  time: String
+  description: String
+  homepage: String
+  license: String
+  module: String
+  main: String
+  packageJsonString: String
+  customElementsString: String
+  library: Library
+  customElements: [CustomElement!]! @relation
+}
+
+type ValueSet {
+  name: String!
+  attribute: Attribute
+  property: Property
+}
+
+type Attribute {
+  name: String!
+  type: String!
+  values: [ValueSet!] @relation
+  customElement: CustomElement
+}
+
+type Property {
+  name: String!
+  type: String!
+  attribute: String
+  reflect: Boolean
+  values: [ValueSet!] @relation
+  customElement: CustomElement
+}
+
+type CustomElement {
+  name: String!
+  attributes: [Attribute!]! @relation
+  properties: [Property!]! @relation
+  package: Package
+  library: Library
+}
+
+type Query {
+  allNpmSync: [NpmSync!]
+
+  allAttributes: [Attribute!]
+  allProperties: [Property!]
+  allValueSets: [ValueSet!]
+
+  allLibraries: [Library!]
+  libraryByName(name: String!): [Library!]
+
+  allPackages: [Package!]
+  packageByName(name: String!): [Package!]
+
+  allCustomElements: [CustomElement!]
+  customElementByName(name: String!): [CustomElement!]
+}
