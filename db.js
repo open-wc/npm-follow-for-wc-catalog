@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { GraphQLClient } = require('graphql-request');
 
 const endpoint = 'https://graphql.fauna.com/graphql';
@@ -6,6 +7,8 @@ const graphQLClient = new GraphQLClient(endpoint, {
     authorization: 'Bearer fnADYc2oY-ACAjR9EnRZT2RrGt5FifqJDpT2UM8H',
   },
 });
+
+// Playground authorization: 'Bearer fnADYe67ZIACAq281apQH3KMD0YkIikg8vGMCuMg'
 
 async function getNpmSyncSeq() {
   const query = /* GraphQL */ `
@@ -16,8 +19,13 @@ async function getNpmSyncSeq() {
       }
     }
   `;
-  const data = await graphQLClient.request(query);
-  return data.findNpmSyncByID.seq;
+  try {
+    const data = await graphQLClient.request(query);
+    return data.findNpmSyncByID.seq;
+  } catch (err) {
+    console.log('## Could not execute `updateNpmSync` on db');
+  }
+  return 0;
 }
 
 async function updateNpmSyncSeq(seq) {
@@ -29,7 +37,11 @@ async function updateNpmSyncSeq(seq) {
       }
     }
   `;
-  await graphQLClient.request(query);
+  try {
+    await graphQLClient.request(query);
+  } catch (err) {
+    console.log('## Could not execute `updateNpmSync` on db');
+  }
 }
 
 function getLibrary(deps) {
@@ -173,7 +185,12 @@ async function createPackage(pkg, version, rawCustomElements) {
     console.log(`Adding CustomElement ${tag.name}`);
   });
   console.log('---');
-  await graphQLClient.request(query);
+
+  try {
+    await graphQLClient.request(query);
+  } catch (err) {
+    console.log('## Could not execute `createPackage` on db', err);
+  }
 }
 
 module.exports = {

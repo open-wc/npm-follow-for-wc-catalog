@@ -1,5 +1,4 @@
-/* eslint-disable */
-
+/* eslint-disable no-console */
 // const ChangesStream = require('changes-stream');
 const https = require('https');
 const changes = require('concurrent-couch-follower');
@@ -45,12 +44,6 @@ async function main() {
   const potentialEndSeq = startSeq + patchSize;
   const endSeq = potentialEndSeq < npmLastDbSeq ? potentialEndSeq : npmLastDbSeq;
 
-  const dataHandler = function(data, done) {
-    syncWc(data).then(() => {
-      done();
-    });
-  };
-
   let active = true;
 
   async function syncWc(change) {
@@ -68,9 +61,10 @@ async function main() {
     const nameAtVersion = `${pkg.name}@${version}`;
     const url = `https://unpkg.com/${nameAtVersion}/${customElementsFile}`;
 
-    let customElementsJsonString = await aRequest(url);
+    let customElementsJsonString;
     // if unpkg does not have the package yet then wait/fetch with increasing intervales
     try {
+      customElementsJsonString = await aRequest(url);
       if (customElementsJsonString === `Cannot find package ${nameAtVersion}`) {
         console.log('Starting to wait for unpkg');
         await aTimeout(10);
@@ -105,6 +99,12 @@ async function main() {
     }
   }
 
+  const dataHandler = (data, done) => {
+    syncWc(data).then(() => {
+      done();
+    });
+  };
+
   let stream;
 
   // for a new index the sequence to start/since from is 2877390 as this marks roughtly
@@ -113,21 +113,25 @@ async function main() {
   const configOptions = {
     db: dbUrl,
     include_docs: true,
-    sequence: function(seq, cb) {
+    sequence: (seq, cb) => {
       if (endless === false && seq >= endSeq) {
         active = false;
       }
-      updateNpmSyncSeq(seq).then(() => {
-        cb();
-        console.log(`= ${seq} // start seq in case of failure`);
-        if (endless === false && seq >= endSeq) {
-          if (endSeq === npmLastDbSeq) {
-            console.log('===> Up to date with latest npm changes');
+      updateNpmSyncSeq(seq)
+        .then(() => {
+          cb();
+          console.log(`= ${seq} // start seq in case of failure`);
+          if (endless === false && seq >= endSeq) {
+            if (endSeq === npmLastDbSeq) {
+              console.log('===> Up to date with latest npm changes');
+            }
+            stream.end();
+            process.exit(0);
           }
-          stream.end();
-          process.exit(0);
-        }
-      });
+        })
+        .catch(err => {
+          console.log('## Could not update npmlas', err);
+        });
     },
     since: startSeq,
     concurrency: 5,
